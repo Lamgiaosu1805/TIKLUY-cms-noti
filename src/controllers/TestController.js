@@ -11,8 +11,8 @@ const TestController = {
         const expo = new Expo({accessToken: process.env.EXPO_ACCESSTOKEN, useFcmV1: true})
         const message = {
             to: "ExponentPushToken[TdUSBLFvm6y1ZVPKxHMf5b]", // Replace with a valid push token from your app
-            title: body.title,
-            body: body.content,
+            title: "CMS Tikluy Thông báo",
+            body: "Khách hàng LÂM ĐZAI đã tạo lệnh rút 100.000.000 VNĐ",
             data: { someData: 'Some data to be sent with the notification' }, // Optional data
         };
         // const message2 = {
