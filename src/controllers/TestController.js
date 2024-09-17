@@ -41,7 +41,7 @@ const TestController = {
             messages.push({
                 to: pushToken,
                 sound: 'default',
-                body: body.body,
+                body: body.content,
                 data: { withSome: 'data' },
             })
         }
