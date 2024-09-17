@@ -1,4 +1,5 @@
 const { default: Expo } = require('expo-server-sdk');
+const NotificationTokenModel = require('../models/NotificationTokenModel');
 const TestController = {
     index: (req, res, next) => {
         res.json({
@@ -27,7 +28,10 @@ const TestController = {
           
         // Create the messages that you want to send to clients
         let messages = [];
-        const somePushTokens = ["ExponentPushToken[B68CZkDcReDFFW6mGqXanb]"]
+        const listTokenModel = await NotificationTokenModel.find()
+        const somePushTokens = listTokenModel.map(item => {
+            return item.token
+        })
         for (let pushToken of somePushTokens) {
             // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
             
@@ -73,6 +77,30 @@ const TestController = {
             }
         })();
         res.send('Sent notification')
+    },
+    saveNoti: async (req, res) => {
+        const {body} = req
+        try {
+            const notificationToken = await NotificationTokenModel.findOneAndUpdate({token: body.token}, body)
+            if(notificationToken) {
+                // NotificationTokenModel.updateOne({userName: body.userName})
+            }
+            else {
+                const newToken = new NotificationTokenModel({
+                    token: body.token,
+                    deviceId: body.deviceId,
+                    userName: body.userName,
+                    roleId: body.roleId
+                })
+                await newToken.save()
+            }
+            res.json({
+                status: true,
+                message: "save token successful"
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 
