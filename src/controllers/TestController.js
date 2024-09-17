@@ -72,7 +72,7 @@ const TestController = {
                 }
             }
         })();
-        res.send('a')
+        res.send('Sent notification')
     }
 }
 
