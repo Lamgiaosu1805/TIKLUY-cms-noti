@@ -100,6 +100,10 @@ const TestController = {
             })
         } catch (error) {
             console.log(error)
+            res.json({
+                status: false,
+                message: "Lỗi save token"
+            })
         }
     }
 }
