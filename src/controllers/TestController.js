@@ -40,6 +40,7 @@ const TestController = {
             // Construct a message (see https://docs.expo.io/push-notifications/sending-notifications/)
             messages.push({
                 to: pushToken,
+                title: 'Quản trị TIKLUY',
                 sound: 'default',
                 body: body.content,
                 data: { withSome: 'data' },
