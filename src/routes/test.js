@@ -4,6 +4,6 @@ const router = express.Router()
 
 router.get('/', TestController.index);
 router.post('/push-noti', TestController.pushNotification);
-router.post('/save-noti', TestController.saveNoti);
+router.post('/save-noti', TestController.saveToken);
 
 module.exports = router;
