@@ -5,6 +5,7 @@ const NotificationUser = new Schema({
     userName: { type: String, default: "" },
     title: { type: String, default: "" },
     content: { type: String, default: "" },
+    isSeen: { type: Boolean, default: false }
 }, {
     timestamps: true
 })
