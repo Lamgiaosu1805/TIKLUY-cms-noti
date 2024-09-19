@@ -131,6 +131,22 @@ const TestController = {
                 message: "Lỗi save token"
             })
         }
+    },
+    getListNotiUser: async(req, res) => {
+        const {body, params, query} = req
+        try {
+            const listNotiUser = await NotificationUserModel.find({userName: query.userName}).sort({ createdAt: 'descending' }).limit(20)
+            res.json({
+                status: true,
+                data: listNotiUser
+            })
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: false,
+                message: "Get noti thất bại"
+            })
+        }
     }
 }
 
